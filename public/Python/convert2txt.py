@@ -1,0 +1,40 @@
+import sys
+import PyPDF2
+import spacy
+from deep_translator import GoogleTranslator
+
+translator = GoogleTranslator(source='auto', target='en')
+
+
+nlp = spacy.load("en_core_web_sm")
+
+file = open(
+    '/Users/aufulkirom/Documents/KULIAH/SKRIPSI/translation-machine/public/storage/asal/' + sys.argv[1], 'rb')
+
+reader = PyPDF2.PdfFileReader(file)
+
+rest = ''
+
+num_pages = reader.numPages
+
+for p in range(num_pages):
+    page = reader.getPage(p)
+    text = page.extractText()
+    results = text.replace(";", "ti")
+    rest += results
+
+res = ''
+resTrans = ''
+result = []
+doc = nlp(rest)
+
+idx = 0
+
+for sent in doc.sents:
+    trans = translator.translate(sent.text)
+    resTrans = resTrans + (str(idx) + ":" + str(trans)) + ";"
+    res = res + (str(idx) + ":" + str(sent.text)) + ";"
+    idx += 1
+
+print(res)
+print(resTrans)
