@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Traits\Response;
 use App\Models\Dosen;
 use App\Models\Kelas;
+use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -103,12 +104,17 @@ class KelasController extends Controller
         try {
             DB::beginTransaction();
 
-            $data = Kelas::find($id)->delete();
-
+            $data = Kelas::find($id);
+            if (Mahasiswa::where('kelas_id', $id)->count() > 0) {
+                # code...
+                return $this->error("Kelas masih memiliki mahasiswa", 400);
+            }
+            $data->delete();
             DB::commit();
             return $this->success($data, "Berhasil Dihapus");
         } catch (\Throwable $th) {
             //throw $th;
+            // dd($id);
             DB::rollBack();
             return $this->error($th->getMessage(), $th->getCode());
         }

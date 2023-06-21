@@ -18,15 +18,14 @@ class KelasSeeder extends Seeder
         $kelas = [
             [
                 'name' => 'TI-1A',
-                'dosen_id' => '3'
             ],
             [
                 'name' => 'TI-1B',
-                'dosen_id' => '3'
+
             ],
             [
                 'name' => 'TI-1C',
-                'dosen_id' => '3'
+
             ],
         ];
 

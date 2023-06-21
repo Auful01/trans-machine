@@ -51,7 +51,7 @@
     </div>
     <div class="form-group">
         <label for="no_hp">No Hp</label>
-        <input type="text" name="no_hp-dosen-detail" id="no_telp-dosen" class="form-control">
+        <input type="text" name="no_hp-dosen-detail" id="no_telp-dosen-detail" class="form-control">
     </div>
     <div class="form-group">
         <label for="password">Kelas</label>
@@ -62,7 +62,7 @@
 
     <div class="d-flex justify-content-end">
         <button class="btn btn-sm btn-secondary" data-dismiss="modal" id="close">Close</button>&nbsp;
-        <button class="btn btn-sm btn-primary" id="btn-save-dosen">Save</button>
+        {{-- <button class="btn btn-sm btn-primary" id="btn-save-dosen">Save</button> --}}
     </div>
 </x-base-modal>
 
@@ -85,7 +85,7 @@
         </div>
         <div class="form-group">
             <label for="no_hp">No Hp</label>
-            <input type="text" name="no_hp-dosen" id="no_telp-dosen" class="form-control">
+            <input type="text" name="no_telp-dosen" id="no_telp-dosen" class="form-control">
         </div>
         <div class="form-group">
             <label for="password">Kelas</label>
@@ -120,7 +120,7 @@
                     render : function(data, type, row){
                         return `
                                 <button data-id=${data}   class="btn btn-sm btn-info btn-detail-dosen"><i class="fas fa-eye"></i></button>
-                                <button data-id=${data}   class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>`
+                                <button data-id=${data}   class="btn btn-sm btn-danger btn-delete-dosen"><i class="fas fa-trash"></i></button>`
                     }
                 },
             ]
@@ -144,6 +144,34 @@
                         return `<span class="badge badge-info">${item}</span>&nbsp;`
                     }))
              }, 1000);
+        })
+
+        $('body').on('click', '.btn-delete-dosen', function () {
+            var id = $(this).data('id')
+            Swal.fire({
+                title: 'Apakah anda yakin?',
+                text: "Data yang dihapus tidak dapat dikembalikan!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#aaa',
+                confirmButtonText: 'Ya, Hapus!'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url : '/api/dosen/'+id,
+                        type : 'DELETE',
+                        success : function(res){
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                                )
+                                $('#list-table-dosen').DataTable().ajax.reload();
+                        }
+                    })
+                }
+            })
         })
 
         function selectClass() {

@@ -34,6 +34,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('login', [AuthController::class, 'login']);
 Route::post('register', [AuthController::class, 'register']);
 Route::get("profile", [AuthController::class, 'profile'])->middleware("jwt:1,2,3");
+Route::put("update/{id}", [UserController::class, 'updateData'])->middleware("jwt:1,2,3");
 
 
 Route::prefix('dosen')->group(function () {

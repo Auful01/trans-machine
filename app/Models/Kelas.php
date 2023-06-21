@@ -13,6 +13,5 @@ class Kelas extends Model
 
     protected $fillable = [
         'name',
-        'dosen_id',
     ];
 }

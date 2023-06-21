@@ -1,0 +1,2 @@
+a = {{var1}}
+print("TEST")

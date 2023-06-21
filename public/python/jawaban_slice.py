@@ -6,8 +6,10 @@ import fitz
 
 nlp = spacy.load("en_core_web_sm")
 
+path ='/Users/aufulkirom/Documents/KULIAH/SKRIPSI/translation-machine/public/storage/hasil/'
+
 file = open(
-    '/Users/aufulkirom/Documents/KULIAH/SKRIPSI/translation-machine/public/storage/hasil/' + sys.argv[1], 'rb')
+      sys.argv[1], 'rb')
 
 reader = fitz.open(file)
 

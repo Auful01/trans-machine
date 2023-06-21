@@ -10,7 +10,7 @@ trait Response
         return response()->json([
             'status' => 'success',
             'message' => $message,
-            'data' => $data,
+            'data' => $data
         ], $code);
     }
 

@@ -27,7 +27,7 @@
         </tbody>
     </table>
 </div>
-
+{{--
 @php
     $listForms = [
         [
@@ -44,7 +44,27 @@
     $listForms = json_encode($listForms);
 @endphp
 
-<x-modal :id="'modal-detail-kelas'" forms={{$listForms}} btnsv="btn-save-kelas" title="Tambah Kelas" size=""/>
+<x-modal :id="'modal-detail-kelas'" forms={{$listForms}} btnsv="btn-save-kelas" title="Tambah Kelas" size=""/> --}}
+
+<x-base-modal id="modal-add-kelas" title="Tambah kelas" size="" position="">
+    <div class="form-group">
+        <label for="">Nama</label>
+        <input type="text" class="form-control form-control-sm" id="nama">
+    </div>
+    <div class="text-right">
+        <button class="btn btn-sm btn-primary" id="btn-save-kelas">Simpan</button>
+    </div>
+</x-base-modal>
+
+<x-base-modal id="modal-detail-kelas" title="Tambah kelas" size="" position="">
+    <div class="form-group">
+        <label for="">Nama</label>
+        <input type="text" class="form-control form-control-sm" id="nama_edit">
+    </div>
+    <div class="text-right">
+        <button class="btn btn-sm btn-primary" id="btn-update-kelas">Simpan</button>
+    </div>
+</x-base-modal>
 
 @endsection
 
@@ -78,7 +98,7 @@
 
 
         $('#btn-add-kelas').on('click', function () {
-            $('#modal-detail-kelas').modal('show')
+            $('#modal-add-kelas').modal('show')
         })
 
         $('#btn-save-kelas').on('click', function () {
@@ -94,6 +114,61 @@
                     $('#modal-detail-kelas').modal('hide')
                     $('#list-table-kelas').DataTable().ajax.reload()
 
+                }
+            })
+        })
+
+        $('#btn-update-kelas').on('click', function () {
+            $.ajax({
+                url: '/api/kelas/' + $('.btn-edit-kelas').data('id'),
+                type: 'POST',
+                data : {
+                    name : $('#nama_edit').val(),
+                },
+                success : function (data) {
+                    alertSuccess("Data Berhasil Disimpan")
+                    $('#modal-detail-kelas').modal('hide')
+                    $('#list-table-kelas').DataTable().ajax.reload()
+
+                }
+            })
+        })
+
+        $('body').on('click', '.btn-edit-kelas', function () {
+            $.ajax({
+                url: '/api/kelas/' + $(this).data('id'),
+                type: 'GET',
+                success : function (data) {
+                    $('#nama_edit').val(data.data.name)
+                    $('#modal-detail-kelas').modal('show')
+                }
+            })
+        })
+
+        $('body').on('click', '.btn-delete-kelas', function () {
+            Swal.fire({
+                title: 'Apakah anda yakin?',
+                text: "Data yang dihapus tidak dapat dikembalikan!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#004A8E',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, Hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // deleteKelas($(this).data('id'))
+                    $.ajax({
+                        url: '/api/kelas/' + $(this).data('id'),
+                        type: 'DELETE',
+                        success : function (data) {
+                            alertSuccess("Data Berhasil Dihapus")
+                            $('#list-table-kelas').DataTable().ajax.reload()
+                        },
+                        error : function (data) {
+                            alertError(data.responseJSON.message);
+                        }
+                    })
                 }
             })
         })

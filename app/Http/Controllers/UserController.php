@@ -6,6 +6,7 @@ use App\Helpers\UsersImport;
 use App\Http\Traits\Response;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
@@ -46,4 +47,19 @@ class UserController extends Controller
 
         return $this->success('Data Berhasil disimpan');
     }
+
+    public function updateData(Request $request, $id)
+    {
+        try {
+            $user = User::find($id);
+            $request['password'] = Hash::make($request->password);
+            $user->update($request->all());
+            // dd($user);
+
+            return $this->success($user, 'Data user berhasil diupdate');
+        } catch (\Throwable $th) {
+            return $this->error($th->getMessage());
+        }
+    }
+
 }

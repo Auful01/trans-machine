@@ -7,8 +7,23 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body"  style="max-height: 70vh;overflow:auto">
-                @foreach ($forms as $item)
+            @php
+            $jsons = '[{
+                "NAME": "Barry",
+                "LANG": "SQL"
+                },{
+                "NAME": "Barry2",
+                "LANG": "PHP"
+                }]';
+
+                // echo is_array($forms) ? "true" : "fase";
+                // $json = str_replace('&quot;', '"', $forms);
+                $object = json_decode($forms);
+                // $object = json_decode($forms, null, 512, JSON_THROW_ON_ERROR);
+                var_dump($forms);
+            @endphp
+            {{-- <div class="modal-body"  style="max-height: 70vh;overflow:auto">
+                @foreach (json_decode($forms) as $item)
                 <div class="form-group">
                     @if ($item->label != 'notes')
                     <label for="" class="text-capitalize">{{str_replace("_", " ",$item->label)}}</label>
@@ -57,7 +72,7 @@
                     @endswitch
                 </div>
                 @endforeach
-            </div>
+            </div> --}}
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <button type="button" id="{{$btnsv}}" class="btn btn-primary">Save changes</button>

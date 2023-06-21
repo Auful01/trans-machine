@@ -6,6 +6,7 @@ use App\Http\Traits\Response;
 use App\Models\Dosen;
 use App\Models\Kelas;
 use App\Models\User;
+use App\Models\PenugasanKelas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -174,6 +175,10 @@ class DosenController extends Controller
     {
         try {
             $dosen = Dosen::find($id);
+            $penugasan = PenugasanKelas::where('created_by', $id)->get();
+            if ($penugasan->count() > 0) {
+                return $this->error('Dosen tidak dapat dihapus karena memiliki penugasan');
+            }
             $dosen->delete();
 
             return $this->success($dosen, 'Data dosen berhasil dihapus');

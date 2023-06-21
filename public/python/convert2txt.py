@@ -2,26 +2,34 @@ import sys
 import PyPDF2
 import spacy
 from deep_translator import GoogleTranslator
+import urllib2
 
 translator = GoogleTranslator(source='auto', target='en')
 
 
 nlp = spacy.load("en_core_web_sm")
 
-file = open(
-    '/Users/aufulkirom/Documents/KULIAH/SKRIPSI/translation-machine/public/storage/asal/' + sys.argv[1], 'rb')
+path = '/Users/aufulkirom/Documents/KULIAH/SKRIPSI/translation-machine/public/storage/asal/';
 
-reader = PyPDF2.PdfFileReader(file)
+# url =
 
-rest = ''
+# file = open(
+#      sys.argv[1], 'rb')
 
-num_pages = reader.numPages
+# files = urllib2.urlopen(sys.argv[1]).read()
 
-for p in range(num_pages):
-    page = reader.getPage(p)
-    text = page.extractText()
-    results = text.replace(";", "ti")
-    rest += results
+# reader = PyPDF2.PdfFileReader(file)
+
+rest = sys.argv[1]
+print(rest)
+
+# num_pages = reader.numPages
+
+# # for p in range(num_pages):
+# #     page = reader.getPage(p)
+# #     text = page.extractText()
+# #     results = text.replace(";", "ti")
+# #     rest += results
 
 res = ''
 resTrans = ''

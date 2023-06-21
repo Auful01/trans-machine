@@ -47,36 +47,65 @@
 @php
      $listForms = [
           [
-            'label' => 'nama',
-            'type'  => 'text',
+            "label" => "nama",
+            "type"  => "text",
           ],
          [
-            'label' => 'nim',
-            'type'  => 'number'
+            "label" => "nim",
+            "type"  => "number"
           ]
         ];
 
         $import = [
             [
-                'label' => 'notes',
-                'type' => 'notes_warning',
-                'description' => 'Please file import type is .xlsx, and Format of column is blbalbalab'
+                "label" => "notes",
+                "type" => "notes_warning",
+                "description" => "Please file import type is .xlsx, and Format of column is blbalbalab"
             ],
             [
-                'label' => 'file_import',
-                'type' => 'file',
-                'accept' => 'excel'
+                "label" => "file_import",
+                "type" => "file",
+                "accept" => "excel"
             ]
         ];
-    $listForms = json_encode($listForms);
-    $import = json_encode($import);
+    $listForms = json_encode($listForms, true);
+    $import = json_encode($import, true);
 
 @endphp
 
-<x-modal :id="'modal-add-mhs'" forms={{$listForms}} btnsv="btn-save-mhs" title="Tambah Mahasiswa" size="" />
 
-<x-modal :id="'modal-import-mhs'" forms={{$import}} btnsv="btn-save-import" title="Import Mahasiswa" size=""/>
+<x-base-modal id="modal-add-mhs" title="Tambah Mahasiswa" size="" position="">
+    <div class="form-group">
+        <label for="">Nama</label>
+        <input type="text" class="form-control form-control-sm" id="nama">
+    </div>
+    <div class="form-group">
+        <label for="">NIM</label>
+        <input type="text" name="" id="nim" class="form-control form-control-sm">
+    </div>
+    <div class="text-right">
+        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+        <button class="btn btn-sm btn-primary" id="btn-save-mhs">Simpan</button>
+    </div>
+</x-base-modal>
 
+<x-base-modal id="modal-import-mhs" size="" title="Import Mahasiswa" position="">
+    <div style="border: 2px dashed rgb(222, 180, 43);background: rgba(224, 191, 28, 0.35);border-radius: 8px;padding:10px;">
+        <h5 class="text-uppercase">Notes</h5>
+        <p style="font-size: 10pt;font-style: italic">
+            Please file import type is .xlsx, and Format of column is blbalbalab
+        </p>
+    </div>
+    {{-- <iframe src="" id="iframe_{{$item->label}}" frameborder="0" style="width: 100%;height:600px;display:none"></iframe> --}}
+    <div class="custom-file my-3">
+        <input type="file" class="custom-file-input" id="file_import" accept="{{App\Helpers\CheckType::accFiles('excel')}}" aria-describedby="inputGroupFileAddon01">
+        <label class="custom-file-label" for="inputGroupFile01" id="label-file_import">Choose file</label>
+    </div>
+    <div class="text-right">
+        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+        <button class="btn btn-sm btn-primary" id="btn-save-import">Simpan</button>
+    </div>
+</x-base-modal>
 @endsection
 
 
