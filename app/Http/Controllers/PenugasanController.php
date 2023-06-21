@@ -69,6 +69,7 @@ class PenugasanController extends Controller
             if ($request->file('file_asal')) {
                 $filename_asal = $request->file('file_asal')->getClientOriginalName();
                 $request->file('file_asal')->storeAs('/asal', $filename_asal, 'public');
+                dd($request->file('file_asal')->storeAs('/asal', $filename_asal, 'public'));
             }
 
             if ($request->file('file_hasil')) {
