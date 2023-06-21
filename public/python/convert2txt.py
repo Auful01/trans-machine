@@ -2,7 +2,6 @@ import sys
 import PyPDF2
 import spacy
 from deep_translator import GoogleTranslator
-import urllib2
 
 translator = GoogleTranslator(source='auto', target='en')
 
