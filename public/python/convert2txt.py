@@ -11,25 +11,22 @@ nlp = spacy.load("en_core_web_sm")
 
 path = '/Users/aufulkirom/Documents/KULIAH/SKRIPSI/translation-machine/public/storage/asal/';
 
-# url =
 
-# file = open(
-#      sys.argv[1], 'rb')
+file = open(
+     sys.argv[1], 'rb')
 
-# files = urllib2.urlopen(sys.argv[1]).read()
-
-# reader = PyPDF2.PdfFileReader(file)
+reader = PyPDF2.PdfFileReader(file)
 
 rest = sys.argv[1]
 print(rest)
 
-# num_pages = reader.numPages
+num_pages = reader.numPages
 
-# # for p in range(num_pages):
-# #     page = reader.getPage(p)
-# #     text = page.extractText()
-# #     results = text.replace(";", "ti")
-# #     rest += results
+for p in range(num_pages):
+    page = reader.getPage(p)
+    text = page.extractText()
+    results = text.replace(";", "ti")
+    rest += results
 
 res = ''
 resTrans = ''
