@@ -80,9 +80,9 @@ class PenugasanController extends Controller
             // $soal_slice = new Process(['python3', File::get(asset('python/convert2txt.py')), asset('storage/asal') . '/' . $filename_asal]);
             // $soal_slice->run();
             $file = asset('storage/hasil') . '/' . $filename_asal;
-            dd($file);
-
-            $soal_slice = Process::fromShellCommandline('python3 -c "$(wget -q -O - ' . asset('storage/python/convert2txt.py') . ')" ');
+            // dd($file);
+            //
+            $soal_slice = Process::fromShellCommandline('python3 -c "$(wget -q -O - ' . asset('storage/python/convert2txt.py') . ')" ' . $file);
             $soal_slice->run();
 
             if (!$soal_slice->isSuccessful()) {
