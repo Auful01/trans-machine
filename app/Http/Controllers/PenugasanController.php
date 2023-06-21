@@ -12,10 +12,10 @@ use App\Models\PenugasanMahasiswaJawaban;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
-use File;
 // use Sastrawi\SentenceDetector\SentenceDetectorFactory();
 
 class PenugasanController extends Controller
@@ -77,10 +77,10 @@ class PenugasanController extends Controller
                 # code...
             }
 
-            $soal_slice = new Process(['python3', 'Python/convert2txt.py', $filename_asal]);
+            $soal_slice = new Process(['python3', File::get(storage_path('Python/convert2txt.py')), asset('storage/asal') . '/' . $filename_asal]);
             $soal_slice->run();
 
-            $jawaban_slice = new Process(['python3', 'Python/jawaban_slice.py', $filename_hasil]);
+            $jawaban_slice = new Process(['python3', File::get(storage_path('Python/jawaban_slice.py')), asset('storage/hasil') . '/' . $filename_hasil]);
             $jawaban_slice->run();
 
             if (!$soal_slice->isSuccessful()) {
