@@ -69,7 +69,6 @@ class PenugasanController extends Controller
             if ($request->file('file_asal')) {
                 $filename_asal = $request->file('file_asal')->getClientOriginalName();
                 $request->file('file_asal')->storeAs('/asal', $filename_asal, 'public');
-                dd($request->file('file_asal')->storeAs('/asal', $filename_asal, 'public'));
             }
 
             if ($request->file('file_hasil')) {
@@ -81,8 +80,9 @@ class PenugasanController extends Controller
             // $soal_slice = new Process(['python3', File::get(asset('python/convert2txt.py')), asset('storage/asal') . '/' . $filename_asal]);
             // $soal_slice->run();
             // ini_get('allow_url_fopen');
+            // ini_set('allow_url_fopen', 1);
             $file = asset('storage/hasil') . '/' . $filename_asal;
-            // dd(fopen($file, 'r'));
+            dd(fopen($file, 'r'));
             //
             $soal_slice = Process::fromShellCommandline('python3 -c "$(wget -q -O - ' . asset('storage/python/convert2txt.py') . ')" ' . $file);
             $soal_slice->run();
