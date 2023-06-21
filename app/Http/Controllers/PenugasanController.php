@@ -77,10 +77,10 @@ class PenugasanController extends Controller
                 # code...
             }
 
-            $soal_slice = new Process(['python3', File::get(storage_path('Python/convert2txt.py')), asset('storage/asal') . '/' . $filename_asal]);
+            $soal_slice = new Process(['python3', File::get(storage_path('python/convert2txt.py')), asset('storage/asal') . '/' . $filename_asal]);
             $soal_slice->run();
 
-            $jawaban_slice = new Process(['python3', File::get(storage_path('Python/jawaban_slice.py')), asset('storage/hasil') . '/' . $filename_hasil]);
+            $jawaban_slice = new Process(['python3', File::get(storage_path('python/jawaban_slice.py')), asset('storage/hasil') . '/' . $filename_hasil]);
             $jawaban_slice->run();
 
             if (!$soal_slice->isSuccessful()) {
