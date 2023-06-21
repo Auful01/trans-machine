@@ -83,18 +83,19 @@ class PenugasanController extends Controller
             $soal_slice = Process::fromShellCommandline('python3 -c "$(wget -q -O - ' . asset('storage/python/convert2txt.py') . ') " ');
             $soal_slice->run();
 
-            $jawaban_slice = new Process(['python3', File::get(asset('python/jawaban_slice.py')), asset('storage/hasil') . '/' . $filename_hasil]);
-            $jawaban_slice->run();
-
             if (!$soal_slice->isSuccessful()) {
                 throw new ProcessFailedException($soal_slice);
             }
+            dd($soal_slice->getOutput());
+
+            $jawaban_slice = new Process(['python3', File::get(asset('python/jawaban_slice.py')), asset('storage/hasil') . '/' . $filename_hasil]);
+            $jawaban_slice->run();
+
 
             if (!$jawaban_slice->isSuccessful()) {
                 throw new ProcessFailedException($jawaban_slice);
             }
 
-            dd($soal_slice->getOutput());
             // $py = file_get_contents(asset('python/test.py'));
             // // dd($py);
 
