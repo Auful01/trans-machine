@@ -77,24 +77,39 @@ class PenugasanController extends Controller
                 # code...
             }
 
-            $py = file_get_contents(asset('python/test.py'));
-            // dd($py);
-
-            // $soal_slice = new Process(['python3',asset('python/test.py'), asset('storage/asal') . '/'. $filename_asal]);
-            // $soal_slice->run();
-            // $file = Storage::disk('public')->download('python', 'test.py');
-            $file = file_get_contents(asset('python/test.py'));
-
-            $soal_slice = new Process(['python3', asset('python/test.py')  , asset('storage/asal') . '/'. $filename_asal]);
-            // $content = file_get_contents(asset("storage/asal" . "/". $filename_asal));
-            // dd($content);
-            $soal_slice = Process::fromShellCommandline('python3 -c "$(wget -q -O - '. asset('storage/python/convert2txt.py') . ') " ');
+            $soal_slice = new Process(['python3', 'Python/convert2txt.py', $filename_asal]);
             $soal_slice->run();
 
-            // $jawaban_slice = new Process(['python3', "$(wget -q -O - ". asset('storage/python/jawaban_slice.py') . " )", asset('storage/hasil'). '/'. $filename_hasil]);
-            // $jawaban_slice->run();
+            $jawaban_slice = new Process(['python3', 'Python/jawaban_slice.py', $filename_hasil]);
+            $jawaban_slice->run();
 
-            // dd($file);
+            if (!$soal_slice->isSuccessful()) {
+                throw new ProcessFailedException($soal_slice);
+            }
+
+            if (!$jawaban_slice->isSuccessful()) {
+                throw new ProcessFailedException($jawaban_slice);
+            }
+
+
+            // $py = file_get_contents(asset('python/test.py'));
+            // // dd($py);
+
+            // // $soal_slice = new Process(['python3',asset('python/test.py'), asset('storage/asal') . '/'. $filename_asal]);
+            // // $soal_slice->run();
+            // // $file = Storage::disk('public')->download('python', 'test.py');
+            // $file = file_get_contents(asset('python/test.py'));
+
+            // $soal_slice = new Process(['python3', asset('python/test.py')  , asset('storage/asal') . '/'. $filename_asal]);
+            // // $content = file_get_contents(asset("storage/asal" . "/". $filename_asal));
+            // // dd($content);
+            // $soal_slice = Process::fromShellCommandline('python3 -c "$(wget -q -O - '. asset('storage/python/convert2txt.py') . ') " ');
+            // $soal_slice->run();
+
+            // // $jawaban_slice = new Process(['python3', "$(wget -q -O - ". asset('storage/python/jawaban_slice.py') . " )", asset('storage/hasil'). '/'. $filename_hasil]);
+            // // $jawaban_slice->run();
+
+            // // dd($file);
             if (!$soal_slice->isSuccessful()) {
                 throw new ProcessFailedException($soal_slice);
             }
