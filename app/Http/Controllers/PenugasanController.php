@@ -81,7 +81,7 @@ class PenugasanController extends Controller
             // $soal_slice->run();
             // ini_get('allow_url_fopen');
             $file = asset('storage/hasil') . '/' . $filename_asal;
-            dd(fopen($file, 'r'));
+            // dd(fopen($file, 'r'));
             //
             $soal_slice = Process::fromShellCommandline('python3 -c "$(wget -q -O - ' . asset('storage/python/convert2txt.py') . ')" ' . $file);
             $soal_slice->run();
