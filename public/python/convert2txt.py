@@ -2,6 +2,8 @@ import sys
 import PyPDF2
 import spacy
 from deep_translator import GoogleTranslator
+# import fitz
+
 
 from urllib.request import urlopen  # the lib that handles the url stuff
 # from io import StringIO
@@ -26,7 +28,7 @@ memoryFile = io.BytesIO(data)
 reader = PyPDF2.PdfFileReader(memoryFile)
 
 
-# num_pages = reader.numPages
+num_pages = reader.numPages
 
 # rest = [];
 
@@ -41,7 +43,7 @@ reader = PyPDF2.PdfFileReader(memoryFile)
 # result = []
 # doc = nlp(data)
 
-print(reader)
+print(num_pages)
 
 # idx = 0
 
