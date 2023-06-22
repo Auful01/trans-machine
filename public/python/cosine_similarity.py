@@ -22,11 +22,11 @@ import json
 # Y = input("Enter second string: ").lower()
 
 test = sys.argv[1]
-test2 = sys.argv[2]
+# test2 = sys.argv[2]
 
 # tokenization
-# jawab = json.loads(test)
-print(test2["jawaban_benar"])
+jawab = test.split("|")
+print(jawab)
 # X_list = word_tokenize(test)
 # Y_list = word_tokenize(test2)
 
