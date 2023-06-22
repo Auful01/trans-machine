@@ -26,37 +26,37 @@ test2 = sys.argv[2]
 
 # tokenization
 # jawab = json.loads(test)
-print(test2)
-# X_list = word_tokenize(jawab["jawaban"])
-# Y_list = word_tokenize(jawab["jawaban_benar"])
+# print(test2)
+X_list = word_tokenize(test)
+Y_list = word_tokenize(test2)
 
-# # sw contains the list of stopwords
-# sw = stopwords.words('english')
-# l1 = []
-# l2 = []
+# sw contains the list of stopwords
+sw = stopwords.words('english')
+l1 = []
+l2 = []
 
-# # # remove stop words from the string
-# Y_set = {w for w in Y_list if not w in sw}
-# X_set = {w for w in X_list if not w in sw and not w.index == len(Y_list) - 1}
+# # remove stop words from the string
+Y_set = {w for w in Y_list if not w in sw}
+X_set = {w for w in X_list if not w in sw and not w.index == len(Y_list) - 1}
 
-# # form a set containing keywords of both strings
-# rvector = X_set.union(Y_set)
-# for w in rvector:
-#     if w in X_set:
-#         l1.append(1)  # create a vector
-#     else:
-#         l1.append(0)
-#     if w in Y_set:
-#         l2.append(1)
-#     else:
-#         l2.append(0)
-# c = 0
+# form a set containing keywords of both strings
+rvector = X_set.union(Y_set)
+for w in rvector:
+    if w in X_set:
+        l1.append(1)  # create a vector
+    else:
+        l1.append(0)
+    if w in Y_set:
+        l2.append(1)
+    else:
+        l2.append(0)
+c = 0
 
-# # # cosine formula
-# for i in range(len(rvector)):
-#     c += l1[i]*l2[i]
-#     if float((sum(l1)*sum(l2))**0.5) != 0:
-#         cosine = c / float((sum(l1)*sum(l2))**0.5)
-#     else:
-#         cosine = 0
-# print(cosine)
+# # cosine formula
+for i in range(len(rvector)):
+    c += l1[i]*l2[i]
+    if float((sum(l1)*sum(l2))**0.5) != 0:
+        cosine = c / float((sum(l1)*sum(l2))**0.5)
+    else:
+        cosine = 0
+print(cosine)

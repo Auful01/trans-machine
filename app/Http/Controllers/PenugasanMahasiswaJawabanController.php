@@ -31,8 +31,8 @@ class PenugasanMahasiswaJawabanController extends Controller
             similar_text($request->jawaban, $arrJawaban[$id], $sim);
             // dd($id);
             $jawab = [
-                'jawaban' => $request->jawaban,
-                'jawaban_benar' => $arrJawaban[$id],
+                $request->jawaban,
+                $arrJawaban[$id],
             ];
 
 
