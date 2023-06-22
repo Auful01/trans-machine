@@ -37,15 +37,17 @@ path = '/Users/aufulkirom/Documents/KULIAH/SKRIPSI/translation-machine/public/st
 res = ''
 resTrans = ''
 result = []
-doc = nlp(data)
+doc = nlp(data.decode('utf-8'))
 
-idx = 0
+print(doc)
 
-for sent in doc.sents:
-    trans = translator.translate(sent.text)
-    resTrans = resTrans + (str(idx) + ":" + str(trans)) + ";"
-    res = res + (str(idx) + ":" + str(sent.text)) + ";"
-    idx += 1
+# idx = 0
 
-print(res)
-print(resTrans)
+# for sent in doc.sents:
+#     trans = translator.translate(sent.text)
+#     resTrans = resTrans + (str(idx) + ":" + str(trans)) + ";"
+#     res = res + (str(idx) + ":" + str(sent.text)) + ";"
+#     idx += 1
+
+# print(res)
+# print(resTrans)
