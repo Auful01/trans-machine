@@ -3,11 +3,12 @@ import PyPDF2
 import spacy
 from deep_translator import GoogleTranslator
 
-import urllib2  # the lib that handles the url stuff
+from urllib.request import urlopen  # the lib that handles the url stuff
 
-data = urllib2.urlopen(sys.argv[1]) # it's a file like object and works just like a file
-for line in data: # files are iterable
-    print(line)
+data = urlopen(sys.argv[1]).read()
+print(data)# it's a file like object and works just like a file
+# for line in data: # files are iterable
+#     print(line)
 
 # translator = GoogleTranslator(source='auto', target='en')
 
