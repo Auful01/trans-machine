@@ -18,11 +18,38 @@ memoryFile = io.BytesIO(data)
 
 reader = PyPDF2.PdfFileReader(memoryFile)
 
+num_pages = reader.numPages
 
 rest = ''
-for page in reader:
-    text = page.get_text(sort=True)
-    print(text)
+
+for p in range(num_pages):
+    page = reader.getPage(p)
+    text = page.extractText().encode('utf-8')
+    results = text.decode('utf-8').replace(";", "ti")
+    # rest += results
+    strs = results.encode('utf-8')
+    var = strs.decode('ascii', 'ignore')
+
+    rest += var
+
+res = ''
+resTrans = ''
+result = []
+# print(rest)
+doc = nlp(rest)
+
+# print(doc)
+
+idx = 0
+
+for sent in doc.sents:
+    res = res + (str(idx) + ":" + str(sent.text)) + ";"
+    idx += 1
+
+print(res)
+# for page in range(num_pages):
+#     text = page.get_text(sort=True)
+#     print(text)
 #     rest += text.replace("Machine Translated by Google",
 #                          "").replace("\n", " ").replace(";", "")
 
