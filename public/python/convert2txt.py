@@ -35,14 +35,15 @@ rest = [];
 for p in range(num_pages):
     page = reader.getPage(p)
     text = page.extractText().encode('utf-8')
-    print(text)
-    results = text.replace(";", "ti")
-    rest += results
+    # results = text.replace(";", "ti")
+    # rest += results
+    rest += text
 
-# res = ''
-# resTrans = ''
-# result = []
-# doc = nlp(data)
+res = ''
+resTrans = ''
+result = []
+doc = nlp(rest)
+print(doc)
 
 
 # idx = 0
