@@ -38,14 +38,14 @@ for p in range(num_pages):
     # results = text.replace(";", "ti")
     # rest += results
     rest.append(text)
-    print(rest)
 
 
 res = ''
 resTrans = ''
 result = []
 # print(rest.decode('utf-8'))
-# doc = nlp(rest)
+doc = nlp(rest)
+print(doc)
 
 
 # idx = 0
