@@ -40,7 +40,7 @@ for p in range(num_pages):
     # rest += results
     strs = results.encode('utf-8')
     UTF8Writer = codecs.getwriter('utf8')
-    print(UTF8Writer(strs))
+    print(UTF8Writer(results))
     # rest.append(text)
 
 res = ''
