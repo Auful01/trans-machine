@@ -4,7 +4,7 @@ import spacy
 from deep_translator import GoogleTranslator
 
 from urllib.request import urlopen  # the lib that handles the url stuff
-
+from StringIO import StringIO
 
 data = urlopen(sys.argv[1]).read()
 # print(data)# it's a file like object and works just like a file
@@ -18,14 +18,16 @@ nlp = spacy.load("en_core_web_sm")
 
 path = '/Users/aufulkirom/Documents/KULIAH/SKRIPSI/translation-machine/public/storage/asal/';
 
+memoryFile = StringIO(data)
+# file = open(
+#      data, 'rb')
 
-file = open(
-     data, 'rb')
-
-reader = PyPDF2.PdfFileReader(file)
+reader = PyPDF2.PdfFileReader(memoryFile)
 
 
 num_pages = reader.numPages
+
+rest = [];
 
 for p in range(num_pages):
     page = reader.getPage(p)
@@ -38,7 +40,7 @@ resTrans = ''
 result = []
 doc = nlp(data)
 
-print(file.read())
+print(doc)
 
 # idx = 0
 
