@@ -26,21 +26,21 @@ test2 = sys.argv[2]
 
 # tokenization
 # jawab = json.loads(test)
-# print(test2)
-X_list = word_tokenize(test)
-Y_list = word_tokenize(test2)
+print(test2)
+# X_list = word_tokenize(test)
+# Y_list = word_tokenize(test2)
 
-# sw contains the list of stopwords
-sw = stopwords.words('english')
-l1 = []
-l2 = []
+# # sw contains the list of stopwords
+# sw = stopwords.words('english')
+# l1 = []
+# l2 = []
 
-# # remove stop words from the string
-Y_set = {w for w in Y_list if not w in sw}
-X_set = {w for w in X_list if not w in sw}
+# # # remove stop words from the string
+# # print(X_list)
+# # print(Y_list)
+# Y_set = {w for w in Y_list if not w in sw}
+# X_set = {w for w in X_list if not w in sw}
 
-print(X_set)
-print(Y_set)
 # form a set containing keywords of both strings
 # rvector = X_set.union(Y_set)
 # for w in rvector:
