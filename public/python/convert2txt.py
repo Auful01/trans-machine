@@ -48,15 +48,15 @@ result = []
 print(rest)
 doc = nlp(rest)
 
-print(doc)
+# print(doc)
 
-# idx = 0
+idx = 0
 
-# for sent in doc.sents:
-#     trans = translator.translate(sent.text)
-#     resTrans = resTrans + (str(idx) + ":" + str(trans)) + ";"
-#     res = res + (str(idx) + ":" + str(sent.text)) + ";"
-#     idx += 1
+for sent in doc.sents:
+    trans = translator.translate(sent.text)
+    resTrans = resTrans + (str(idx) + ":" + str(trans)) + ";"
+    res = res + (str(idx) + ":" + str(sent.text)) + ";"
+    idx += 1
 
-# print(res)
-# print(resTrans)
+print(res)
+print(resTrans)
