@@ -32,18 +32,18 @@ num_pages = reader.numPages
 
 # rest = [];
 
-# for p in range(num_pages):
-#     page = reader.getPage(p)
-#     text = page.extractText()
-#     results = text.replace(";", "ti")
-#     rest += results
+for p in range(num_pages):
+    page = reader.getPage(p)
+    text = page.extractText()
+    print(text)
+    results = text.replace(";", "ti")
+    rest += results
 
 # res = ''
 # resTrans = ''
 # result = []
 # doc = nlp(data)
 
-print(num_pages)
 
 # idx = 0
 
