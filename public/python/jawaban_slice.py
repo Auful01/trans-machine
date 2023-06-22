@@ -1,7 +1,7 @@
 import sys
 import PyPDF2
 import spacy
-import fitz
+# import fitz
 import io
 from urllib.request import urlopen
 
