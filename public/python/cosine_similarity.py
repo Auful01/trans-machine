@@ -26,7 +26,7 @@ test2 = sys.argv[2]
 
 # tokenization
 # jawab = json.loads(test)
-print(test2)
+print(test2["jawaban_benar"])
 # X_list = word_tokenize(test)
 # Y_list = word_tokenize(test2)
 
