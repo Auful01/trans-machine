@@ -93,7 +93,7 @@ class PenugasanController extends Controller
                 throw new ProcessFailedException($soal_slice);
             }
 
-            $jawaban_slice = Process::fromShellCommandline('python3 -c "$(wget -q -O - ' . asset('storage/python/jawaban_slice.py') . ')" ' . $file_hasil);
+            $jawaban_slice = Process::fromShellCommandline('python3 -c "$(wget -q -O - ' . asset('storage/python/jawaban_slice.py') . ')" ' . $file_asal);
             $jawaban_slice->run();
 
 
