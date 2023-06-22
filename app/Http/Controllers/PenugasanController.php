@@ -123,7 +123,7 @@ class PenugasanController extends Controller
                 throw new ProcessFailedException($soal_slice);
             }
             $soalOutput = $soal_slice->getOutput();
-            dd($soalOutput);
+            // dd($soalOutput);
             if (!$soal_slice->isSuccessful()) {
                 throw new ProcessFailedException($soal_slice);
             }
