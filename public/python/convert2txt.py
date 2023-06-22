@@ -30,7 +30,7 @@ reader = PyPDF2.PdfFileReader(memoryFile)
 
 num_pages = reader.numPages
 
-rest = [];
+rest = '';
 
 for p in range(num_pages):
     page = reader.getPage(p)
@@ -40,24 +40,25 @@ for p in range(num_pages):
     strs = results.encode('utf-8')
     var = strs.decode('ascii', 'ignore')
     # print(var)
-    rest.append(var)
+    # rest.append(var)
+    rest += var
 
 res = ''
 resTrans = ''
 result = []
 print(rest)
-doc = nlp(rest)
+# doc = nlp(rest)
 
 # print(doc)
 
-idx = 0
+# idx = 0
 
-for sent in doc.sents:
-    print(sent);
-    # trans = translator.translate(sent.text)
-    # resTrans = resTrans + (str(idx) + ":" + str(trans)) + ";"
-    # res = res + (str(idx) + ":" + str(sent.text)) + ";"
-    # idx += 1
+# for sent in doc.sents:
+#     print(sent);
+#     # trans = translator.translate(sent.text)
+#     # resTrans = resTrans + (str(idx) + ":" + str(trans)) + ";"
+#     # res = res + (str(idx) + ":" + str(sent.text)) + ";"
+#     # idx += 1
 
-print(res)
-print(resTrans)
+# print(res)
+# print(resTrans)
