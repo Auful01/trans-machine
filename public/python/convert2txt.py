@@ -42,7 +42,7 @@ for p in range(num_pages):
 res = ''
 resTrans = ''
 result = []
-print(rest)
+print(rest.decode('utf-8'))
 # doc = nlp(rest)
 
 
