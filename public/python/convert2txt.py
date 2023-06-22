@@ -37,12 +37,13 @@ for p in range(num_pages):
     text = page.extractText().encode('utf-8')
     # results = text.replace(";", "ti")
     # rest += results
+    print(text)
     rest += text
 
 res = ''
 resTrans = ''
 result = []
-print(rest.decode('utf-8'))
+# print(rest.decode('utf-8'))
 # doc = nlp(rest)
 
 
