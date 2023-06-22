@@ -23,8 +23,8 @@ import json
 
 test = sys.argv[1]
 # tokenization
-jawab = json.loads(test)
-print(jawab)
+# jawab = json.loads(test)
+print(test)
 # X_list = word_tokenize(jawab["jawaban"])
 # Y_list = word_tokenize(jawab["jawaban_benar"])
 
