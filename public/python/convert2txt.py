@@ -37,9 +37,9 @@ for p in range(num_pages):
     text = page.extractText().encode('utf-8')
     results = text.decode('utf-8').replace(";", "ti")
     # rest += results
-    rest.append(str(results))
+    print(type(results))
+    rest.append(text)
 
-print(rest)
 res = ''
 resTrans = ''
 result = []
