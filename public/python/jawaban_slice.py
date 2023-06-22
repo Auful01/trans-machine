@@ -17,13 +17,13 @@ memoryFile = io.BytesIO(data)
 # file = open(
 #       sys.argv[1], 'rb')
 
-reader = fitz.open(stream=memoryFile)
+reader = fitz.open(stream=memoryFile, filetype="pdf")
 
 
 rest = ''
 for page in tqdm(reader):
     # text = page.get_text(sort=True)
-    print(page.get_text())
+    print(page.getText())
 #     rest += text.replace("Machine Translated by Google",
 #                          "").replace("\n", " ").replace(";", "")
 
