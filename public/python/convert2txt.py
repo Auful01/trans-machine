@@ -39,7 +39,7 @@ for p in range(num_pages):
     # rest += results
     rest.append(text)
 
-print(rest)
+print(type(rest))
 res = ''
 resTrans = ''
 result = []
