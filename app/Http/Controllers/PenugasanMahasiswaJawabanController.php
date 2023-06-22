@@ -38,7 +38,7 @@ class PenugasanMahasiswaJawabanController extends Controller
 
 
             $jawab = json_encode($jawab);
-            dd($jawab);
+            // dd($jawab);
             $test = Process::fromShellCommandline('python3 -c "$(wget -q -O - ' . asset('storage/python/cosine_similarity.py') . ')" ' . $jawab);
             $test->run();
             if (!$test->isSuccessful()) {
