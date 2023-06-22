@@ -38,9 +38,9 @@ for p in range(num_pages):
     # results = text.replace(";", "ti")
     # rest += results
     rest += text
+    print(rest)
 
 
-print(rest)
 res = ''
 resTrans = ''
 result = []
