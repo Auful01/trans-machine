@@ -22,7 +22,7 @@ reader = fitz.open(stream=memoryFile, filetype="pdf")
 rest = ''
 for page in reader:
     # text = page.get_text(sort=True)
-    print(page)
+    print(reader.get_page_text(0))
 #     rest += text.replace("Machine Translated by Google",
 #                          "").replace("\n", " ").replace(";", "")
 
