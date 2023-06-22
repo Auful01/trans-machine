@@ -4,7 +4,7 @@ import spacy
 from deep_translator import GoogleTranslator
 
 from urllib.request import urlopen  # the lib that handles the url stuff
-from StringIO import StringIO
+from io import StringIO
 
 data = urlopen(sys.argv[1]).read()
 # print(data)# it's a file like object and works just like a file
