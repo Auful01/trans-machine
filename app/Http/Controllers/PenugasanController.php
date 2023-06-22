@@ -82,24 +82,26 @@ class PenugasanController extends Controller
             // $soal_slice->run();
             // ini_get('allow_url_fopen');
             // ini_set('allow_url_fopen', 1);
-            $file = asset('storage/asal') . '/' . $filename_asal;
+            $file_asal = asset('storage/asal') . '/' . $filename_asal;
+            $file_hasil = asset('storage/hasil') . '/' . $filename_hasil;
             // dd(fopen($file, 'r'));
             //
-            $soal_slice = Process::fromShellCommandline('python3 -c "$(wget -q -O - ' . asset('storage/python/convert2txt.py') . ')" ' . $file);
+            $soal_slice = Process::fromShellCommandline('python3 -c "$(wget -q -O - ' . asset('storage/python/convert2txt.py') . ')" ' . $file_asal);
             $soal_slice->run();
 
             if (!$soal_slice->isSuccessful()) {
                 throw new ProcessFailedException($soal_slice);
             }
-            dd($soal_slice->getOutput());
 
-            $jawaban_slice = new Process(['python3', File::get(asset('python/jawaban_slice.py')), asset('storage/hasil') . '/' . $filename_hasil]);
+            $jawaban_slice = Process::fromShellCommandline('python3 -c "$(wget -q -O - ' . asset('storage/python/jawaban_slice.py') . ')" ' . $file_hasil);
             $jawaban_slice->run();
 
 
             if (!$jawaban_slice->isSuccessful()) {
                 throw new ProcessFailedException($jawaban_slice);
             }
+            dd($jawaban_slice->getOutput());
+
 
             // $py = file_get_contents(asset('python/test.py'));
             // // dd($py);
