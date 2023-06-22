@@ -35,7 +35,7 @@ rest = [];
 for p in range(num_pages):
     page = reader.getPage(p)
     text = page.extractText().encode('utf-8')
-    # results = text.replace(";", "ti")
+    results = text.replace(";", "ti")
     # rest += results
     rest.append(text)
 
