@@ -24,7 +24,7 @@ rest = ''
 
 for p in range(num_pages):
     page = reader.getPage(p)
-    text = page.extractText().encode('utf-8')
+    text = page.extractText(0).encode('utf-8')
     results = text.decode('utf-8').replace(";", "ti")
     # rest += results
     strs = results.encode('utf-8')
