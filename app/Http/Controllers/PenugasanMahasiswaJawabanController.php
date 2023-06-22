@@ -45,6 +45,7 @@ class PenugasanMahasiswaJawabanController extends Controller
             }
 
             $nilai_ai = $test->getOutput();
+            dd($nilai_ai);
             dd(($updt->total_nilai + number_format(floatval($nilai_ai) * 100, 2, '.', ' ') / count($arrJawaban)));
             // dd($request->jawaban);
 
