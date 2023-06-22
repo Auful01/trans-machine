@@ -16,7 +16,7 @@ memoryFile = io.BytesIO(data)
 # file = open(
 #       sys.argv[1], 'rb')
 
-reader = fitz.open(stream=memoryFile, filetype="pdf")
+reader = fitz.open(stream=data, filetype="pdf")
 
 
 rest = ''
