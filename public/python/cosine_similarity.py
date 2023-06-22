@@ -22,6 +22,8 @@ import json
 # Y = input("Enter second string: ").lower()
 
 test = sys.argv[1]
+test2 = sys.argv[2]
+
 # tokenization
 # jawab = json.loads(test)
 print(test)
