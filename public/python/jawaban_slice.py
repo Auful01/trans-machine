@@ -15,15 +15,14 @@ memoryFile = io.BytesIO(data)
 
 # file = open(
 #       sys.argv[1], 'rb')
-pdf = PyPDF2.PdfFileReader(memoryFile)
 
-reader = fitz.Document(pdf)
+reader = fitz.open(stream=memoryFile, filetype="pdf")
 
 
 rest = ''
 for page in reader:
     # text = page.get_text(sort=True)
-    print(page.get_text())
+    print(page)
 #     rest += text.replace("Machine Translated by Google",
 #                          "").replace("\n", " ").replace(";", "")
 
