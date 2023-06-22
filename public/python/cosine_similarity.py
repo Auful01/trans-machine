@@ -25,7 +25,7 @@ test = sys.argv[1]
 # test2 = sys.argv[2]
 
 # tokenization
-jawab = test.split("|")
+jawab = test.split(";")
 print(jawab)
 # X_list = word_tokenize(test)
 # Y_list = word_tokenize(test2)
