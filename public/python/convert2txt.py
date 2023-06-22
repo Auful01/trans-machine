@@ -3,7 +3,6 @@ import PyPDF2
 import spacy
 from deep_translator import GoogleTranslator
 # import fitz
-import codecs
 
 
 from urllib.request import urlopen  # the lib that handles the url stuff
@@ -38,9 +37,8 @@ for p in range(num_pages):
     text = page.extractText().encode('utf-8')
     results = text.decode('utf-8').replace(";", "ti")
     # rest += results
-    strs = results.encode('utf-8')
-    UTF8Writer = codecs.getwriter('utf8')
-    print(UTF8Writer(results))
+    strs = results.encode('utf-8').encode('ascii', 'ignore')
+    print(strs.decode('utf-8'))
     # rest.append(text)
 
 res = ''
