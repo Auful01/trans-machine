@@ -77,7 +77,7 @@ class PenugasanController extends Controller
                 # code...
             }
 
-            ini_set('memory_limit', '44M');
+            ini_set('memory_limit', '-1');
             // $soal_slice = new Process(['python3', File::get(asset('python/convert2txt.py')), asset('storage/asal') . '/' . $filename_asal]);
             // $soal_slice->run();
             // ini_get('allow_url_fopen');
