@@ -5,7 +5,8 @@ from deep_translator import GoogleTranslator
 
 from urllib.request import urlopen  # the lib that handles the url stuff
 
-data = urlopen(sys.argv[1]).read()
+
+data = urlopen(sys.argv[1]).read().decode('utf-8')
 # print(data)# it's a file like object and works just like a file
 # for line in data: # files are iterable
 #     print(line)
@@ -34,12 +35,12 @@ path = '/Users/aufulkirom/Documents/KULIAH/SKRIPSI/translation-machine/public/st
 #     results = text.replace(";", "ti")
 #     rest += results
 
-res = ''
-resTrans = ''
-result = []
-doc = nlp(data.decode('utf-8'))
+# res = ''
+# resTrans = ''
+# result = []
+# doc = nlp(data)
 
-print(doc)
+print(data)
 
 # idx = 0
 
