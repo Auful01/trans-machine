@@ -39,8 +39,7 @@ for p in range(num_pages):
     # rest += results
     strs = results.encode('utf-8')
     var = strs.decode('ascii', 'ignore')
-    # print(var)
-    # rest.append(var)
+
     rest += var
 
 res = ''
@@ -51,14 +50,14 @@ doc = nlp(rest)
 
 # print(doc)
 
-# idx = 0
+idx = 0
 
 for sent in doc.sents:
-    print(sent);
-#     # trans = translator.translate(sent.text)
-#     # resTrans = resTrans + (str(idx) + ":" + str(trans)) + ";"
-#     # res = res + (str(idx) + ":" + str(sent.text)) + ";"
-#     # idx += 1
+    # print(sent);
+    trans = translator.translate(sent.text)
+    resTrans = resTrans + (str(idx) + ":" + str(trans)) + ";"
+    res = res + (str(idx) + ":" + str(sent.text)) + ";"
+    idx += 1
 
-# print(res)
-# print(resTrans)
+print(res)
+print(resTrans)
