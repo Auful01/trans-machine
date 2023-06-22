@@ -30,14 +30,14 @@ reader = PyPDF2.PdfFileReader(memoryFile)
 
 num_pages = reader.numPages
 
-rest = [];
+rest = '';
 
 for p in range(num_pages):
     page = reader.getPage(p)
     text = page.extractText().encode('utf-8')
     # results = text.replace(";", "ti")
-    # rest += results
-    rest.append(text)
+    rest += text
+    # rest.append(text)
 
 
 res = ''
