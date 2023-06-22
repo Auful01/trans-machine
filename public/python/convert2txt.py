@@ -34,10 +34,10 @@ rest = [];
 
 for p in range(num_pages):
     page = reader.getPage(p)
-    text = page.extractText().encode('utf-8')
+    text = page.extractText().decode('utf-8')
     # results = text.replace(";", "ti")
     # rest += results
-    rest += text.decode('utf-8')
+    rest += text
 
 res = ''
 resTrans = ''
