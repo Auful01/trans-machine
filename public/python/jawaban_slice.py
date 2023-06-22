@@ -21,7 +21,7 @@ reader = fitz.open(stream=memoryFile, filetype="pdf")
 
 
 rest = ''
-for page in tqdm(reader):
+for page in reader:
     text = page.getText()
     print(text.encode('utf-8'))
 #     rest += text.replace("Machine Translated by Google",
