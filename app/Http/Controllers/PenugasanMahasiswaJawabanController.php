@@ -36,8 +36,8 @@ class PenugasanMahasiswaJawabanController extends Controller
             ];
             $jwb_mhs = $request->jawaban;
             // dd($jwb_mhs);
-            dd($arrJawaban[$id]);
-            $jwb_bnr = explode(":", $arrJawaban[$id])[1];
+            $jwb_bnr = explode(":", $arrJawaban[$id]);
+            dd($jwb_bnr);
             $jawab = $jwb_mhs . ";" . $jwb_bnr[$id];
             dd($jawab);
 
