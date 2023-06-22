@@ -46,15 +46,15 @@ for p in range(num_pages):
 res = ''
 resTrans = ''
 result = []
-print(rest)
-# doc = nlp(rest)
+# print(rest)
+doc = nlp(rest)
 
 # print(doc)
 
 # idx = 0
 
-# for sent in doc.sents:
-#     print(sent);
+for sent in doc.sents:
+    print(sent);
 #     # trans = translator.translate(sent.text)
 #     # resTrans = resTrans + (str(idx) + ":" + str(trans)) + ";"
 #     # res = res + (str(idx) + ":" + str(sent.text)) + ";"
