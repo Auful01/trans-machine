@@ -6,7 +6,7 @@ from deep_translator import GoogleTranslator
 from urllib.request import urlopen  # the lib that handles the url stuff
 
 
-data = urlopen(sys.argv[1]).read().decode('utf-8')
+data = urlopen(sys.argv[1]).read()
 # print(data)# it's a file like object and works just like a file
 # for line in data: # files are iterable
 #     print(line)
@@ -38,7 +38,7 @@ resTrans = ''
 result = []
 doc = nlp(data)
 
-print(doc)
+print(file.read())
 
 # idx = 0
 
