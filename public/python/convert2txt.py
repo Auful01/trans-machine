@@ -39,15 +39,16 @@ for p in range(num_pages):
     # rest += results
     strs = results.encode('utf-8')
     var = strs.decode('ascii', 'ignore')
-    print(var)
-    # rest.append(text)
+    # print(var)
+    rest.append(var)
 
 res = ''
 resTrans = ''
 result = []
-# print(rest.decode('utf-8'))
-# doc = nlp(rest)
+print(rest)
+doc = nlp(rest)
 
+print(doc)
 
 # idx = 0
 
