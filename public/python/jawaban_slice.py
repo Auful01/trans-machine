@@ -4,6 +4,7 @@ import spacy
 import fitz
 import io
 from urllib.request import urlopen
+from tqdm import tqdm
 
 data = urlopen(sys.argv[1]).read()
 
@@ -20,7 +21,7 @@ reader = fitz.open(stream=memoryFile, filetype="pdf")
 
 
 rest = ''
-for page in reader:
+for page in tqdm(reader):
     # text = page.get_text(sort=True)
     print(page.get_text())
 #     rest += text.replace("Machine Translated by Google",
