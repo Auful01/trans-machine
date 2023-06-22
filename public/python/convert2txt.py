@@ -38,7 +38,7 @@ for p in range(num_pages):
     results = text.decode('utf-8').replace(";", "ti")
     # rest += results
     strs = results.encode('utf-8').encode('ascii', 'ignore')
-    print(strs.decode('utf-8'))
+    print(strs)
     # rest.append(text)
 
 res = ''
