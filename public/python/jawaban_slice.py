@@ -17,7 +17,7 @@ memoryFile = io.BytesIO(data)
 #       sys.argv[1], 'rb')
 pdf = PyPDF2.PdfFileReader(memoryFile)
 
-reader = fitz.open(stream=pdf, filetype="pdf")
+reader = fitz.open(pdf)
 
 
 rest = ''
